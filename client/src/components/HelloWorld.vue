@@ -47,7 +47,7 @@ export default {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           };
-          const res = await fetch("https://localhost:5000/test", {method, headers, body});
+          const res = await fetch("/test", {method, headers, body});
           if (res.ok) {
             const responseMessage = await res.json();
             this.message = responseMessage.message;
