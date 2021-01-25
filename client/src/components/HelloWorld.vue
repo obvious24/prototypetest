@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>Welcome{{message }}</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -18,9 +19,6 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
   </div>
 </template>
 
@@ -35,13 +33,30 @@ export default {
         form: {
           name: '',
         },
-        show: true
+        show: true,
+        message:'',
       }
     },
     methods: {
       onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
+         const created = async () => {
+          const method = "POST";
+          const body = JSON.stringify(this.form);
+          const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          };
+          const res = await fetch("https://localhost:5000/test", {method, headers, body});
+          if (res.ok) {
+            const responseMessage = await res.json();
+            this.message = responseMessage.message;
+          } else {
+            this.message = 'failed';
+          }
+        }
+        created();
+  },
       },
       onReset(event) {
         event.preventDefault()
@@ -54,7 +69,6 @@ export default {
         })
       }
     }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
