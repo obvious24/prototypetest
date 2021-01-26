@@ -10,41 +10,56 @@ const usersRouter = require('./routes/users');
 
 
 
-// view engine setup
+
 const ignoreFavicon = (req, res, next) => {
     if (req.originalUrl.includes('favicon.ico')) {
         res.status(204).end();
     }
     next();
 };
-const app = express();
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+const create = async () => {
+  const app = express();
+  app.use(logger('dev'));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(cookieParser());
+  app.use(ignoreFavicon);
 
+  // view
+  app.get('/', (req, res) => { express.static(path.join(__dirname, '../client/dist')) });
+
+  //API
+  app.use('/index', indexRouter);
+
+  app.use((err, req, res, next) => {
+        console.error(err.stack);
+        res.status(500).send('Something broke!');
+    });
+    return app;
+};
+
+module.exports = {
+    create
+};
 // app.use(cors())
 
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
-//API
-app.use('/index', indexRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
-const PORT = process.env.PORT ||5000;
-const start = () => {
-  // await createConnection();
-  app.listen(PORT, () => {
-    console.log(`Web Server is running at ${PORT}.`);
-  });
-};
+// const PORT = process.env.PORT ||5000;
+// const start = () => {
+//   // await createConnection();
+//   app.listen(PORT, () => {
+//     console.log(`Web Server is running at ${PORT}.`);
+//   });
+// };
 
-start();
+// start();
 // // error handler
 // app.use(function(err, req, res, next) {
 //   // set locals, only providing error in development
