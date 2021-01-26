@@ -47,10 +47,11 @@ export default {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           };
-          const res = await fetch("/test", {method, headers, body});
+          const res = await fetch("index/test", {method, headers, body});
           if (res.ok) {
             const responseMessage = await res.json();
-            this.message = responseMessage.message;
+            const parsMessage = JSON.parse(responseMessage)
+            this.message = parsMessage.message;
           } else {
             this.message = 'failed';
           }
