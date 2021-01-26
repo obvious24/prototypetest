@@ -8,10 +8,16 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-const app = express();
+
 
 // view engine setup
-
+const ignoreFavicon = (req, res, next) => {
+    if (req.originalUrl.includes('favicon.ico')) {
+        res.status(204).end();
+    }
+    next();
+};
+const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
