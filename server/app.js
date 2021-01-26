@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT ||5000;
 const start = () => {
   // await createConnection();
   app.listen(PORT, () => {
