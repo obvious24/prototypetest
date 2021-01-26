@@ -26,7 +26,7 @@ const create = async () => {
   app.use(ignoreFavicon);
 
   // view
-  app.get('/', (req, res) => { express.static(path.join(__dirname, '../client/dist')) });
+  app.use('/', express.static(path.join(__dirname, '../client/dist')) );
 
   //API
   app.use('/index', indexRouter);
