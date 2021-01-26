@@ -20,6 +20,7 @@ app.use(cookieParser());
 // app.use(cors())
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
+
 app.use('/index', indexRouter);
 // app.use('/users', usersRouter);
 
