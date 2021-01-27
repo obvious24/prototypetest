@@ -4,26 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 
-
-
-const ignoreFavicon = (req, res, next) => {
-    if (req.originalUrl.includes('favicon.ico')) {
-        res.status(204).end();
-    }
-    next();
-};
 const create = async () => {
   const app = express();
   app.use(logger('dev'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser());
-  app.use(ignoreFavicon);
 
   // view
   app.use('/', express.static(path.join(__dirname, '../client/dist')) );
