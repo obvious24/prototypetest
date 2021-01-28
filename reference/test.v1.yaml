@@ -37,20 +37,8 @@ paths:
             schema:
               type: object
               properties:
-                firstName:
+                name:
                   type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                dateOfBirth:
-                  type: string
-                  format: date
-              required:
-                - firstName
-                - lastName
-                - email
-                - dateOfBirth
             examples:
               Create User Bob Fellow:
                 value:
@@ -59,7 +47,7 @@ paths:
                   email: bob.fellow@gmail.com
                   dateOfBirth: '1996-08-24'
         description: Post the necessary fields for the API to create a new user.
-      description: Create a new user.
+      description: とりあえず
       parameters: []
       tags:
         - test
@@ -79,6 +67,14 @@ components:
           dateOfBirth: '1997-10-31'
           emailVerified: true
           signUpDate: '2019-08-24'
+        example-2:
+          id: 0
+          firstName: string
+          lastName: string
+          email: user@example.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          createDate: '2019-08-24'
       properties:
         id:
           type: integer
