@@ -46,9 +46,18 @@ paths:
                   lastName: Fellow
                   email: bob.fellow@gmail.com
                   dateOfBirth: '1996-08-24'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
         description: Post the necessary fields for the API to create a new user.
       description: とりあえず
-      parameters: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Content-Type
+          description: application/json
       tags:
         - test
     parameters: []
