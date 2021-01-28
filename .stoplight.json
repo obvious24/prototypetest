@@ -2,22 +2,22 @@
   "exclude": [],
   "formats": {
     "openapi": {
-      "rootDir": "reference",
+      "rootDir": "../reference",
       "include": [
         "**"
       ]
     },
     "json_schema": {
-      "rootDir": "models",
+      "rootDir": "../models",
       "include": [
         "**"
       ]
     },
     "markdown": {
-      "rootDir": "docs"
+      "rootDir": "../docs"
     },
     "image": {
-      "rootDir": "assets/images"
+      "rootDir": "../assets/images"
     }
   }
 }

@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": " node index.js --unhandled-rejections=warn"
+    "start": " node index.js --unhandled-rejections=warn",
+    "mock": "prism mock ../reference/test.v1.yaml"
   },
   "devDependencies": {
     "eslint": "^7.9.0",
@@ -18,6 +19,7 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
+    "@stoplight/prism-cli": "^4.1.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.17.1",
