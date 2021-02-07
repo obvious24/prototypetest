@@ -2,7 +2,6 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Welcome{{message }}</h2>
-
     <b-form @submit="onSubmit" @reset="onReset" @here="onHere" v-if="show">
       <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
         <b-form-input
@@ -14,7 +13,7 @@
       </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button type="here" variant="primary">こちらへ</b-button>
+      <router-link to="/main">こちらへ</router-link>
     </b-form>
   </div>
 </template>

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import test from './modules/test'
+import test from './modules/list'
 
 Vue.use(Vuex); // Vue で使えるようにアクティベート
 
